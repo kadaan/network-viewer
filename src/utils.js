@@ -272,10 +272,12 @@ export const prepareTooltipData = (data) => ({
   queuedAt: parseTime(data.startTime),
   startedAt: parseTime(data.startTime + data._blocked_queueing),
   totalTime: parseTime(calcTotalTime(data)),
-  ...(Object.keys(data).reduce((acc, key) => {
-    acc[key] = parseTime(data[key]);
-    return acc;
-  }, {})
+  ...(Object.keys(data)
+    .filter((key) => data[key] > 0)
+    .reduce((acc, key) => {
+      acc[key] = parseTime(data[key]);
+      return acc;
+    }, {})
   ),
 });
 

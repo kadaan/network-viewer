@@ -1,0 +1,12 @@
+@import "./../../styles/variables";
+
+.timings-content {
+  display: block;
+  width: 300px;
+  height: auto;
+  background: $white-100;
+  color: $white-33;
+  font-size: $font-size-small;
+  padding: $size-m / 2;
+  opacity: 1;
+}

@@ -19,7 +19,7 @@ const DETAIL = [{
   category: ['send', 'wait', 'receive'],
 }];
 
-const TimeChartTooltip = ({ data }) => {
+const TimeChartTooltip = ({ className, data }) => {
   const tooltipData = useMemo(() => (!data ? null : prepareTooltipData(data)), [data]);
 
   if (!tooltipData) {
@@ -27,7 +27,7 @@ const TimeChartTooltip = ({ data }) => {
   }
 
   return (
-    <div className={Styles.tooltip}>
+    <div className={className || Styles.tooltip}>
       <section className={Styles['tooltip-info']}>
         <p className={Styles['time-info']}>
           {`Queued at ${tooltipData.queuedAt}`}
@@ -80,7 +80,12 @@ const TimeChartTooltip = ({ data }) => {
 };
 
 TimeChartTooltip.propTypes = {
+  className: PropTypes.object,
   data: PropTypes.object.isRequired,
+};
+
+TimeChartTooltip.defaultProps = {
+  className: null,
 };
 
 export default TimeChartTooltip;
