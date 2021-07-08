@@ -37,12 +37,14 @@ const ReqDetailContainer = () => {
         >
           <Headers data={reqDetail} />
         </Tab>
-        <Tab
-          eventKey="response"
-          name="Response"
-        >
-          <Response data={reqDetail} />
-        </Tab>
+        {reqDetail !== null && reqDetail.body && (
+          <Tab
+            eventKey="response"
+            name="Response"
+          >
+            <Response data={reqDetail}/>
+          </Tab>
+        )}
       </Tabs>
     </div>
   );

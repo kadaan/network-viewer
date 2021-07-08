@@ -5,7 +5,7 @@ import Styles from './../Headers.styles.scss';
 
 const FormData = ({ data, isURLEncoded }) => (
   <div className={Styles['header-detail']}>
-    {data.headers.postData.params.map(({ name, value }, index) => (
+    {Object.keys(data.headers.postData).map((name, index) => (
       <p
         key={`${name}-${index}`}
         className={Styles['info-row']}
@@ -14,7 +14,7 @@ const FormData = ({ data, isURLEncoded }) => (
           {`${name}:`}
         </span>
         <span className={Styles['info-value']}>
-          {isURLEncoded ? decodeURIComponent(value) : value}
+          {isURLEncoded ? decodeURIComponent(data.headers.postData[name]) : data.headers.postData[name]}
         </span>
       </p>
     ))}
